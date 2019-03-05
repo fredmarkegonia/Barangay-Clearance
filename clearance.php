@@ -1,17 +1,20 @@
 <?php
   session_start();
   require 'config.php';
+    $sql = "SELECT * FROM barangay,staff
+		 WHERE barangay.barangay_id = barangay.barangay_id AND staff.staff_id = staff.staff_id";
   if(isset($_POST['save'])){
-    $id = $_POST['id'];
+    $persons_id = $_POST['persons_id'];
     $first_name = $_POST['first_name'];
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
     $status = $_POST['status'];
     $address = $_POST['address'];
     $birth_date = $_POST['birth_date'];
-
+    $barangay_id = $_POST['barangay_id'];
+    $staff_id = $_POST['staff_id'];
 	
-    $insert_information = "INSERT INTO  `persons`(`id`,`first_name`, `middle_name`, `last_name`, `status`, `address`, `birth_date` ) VALUES ('$id','$first_name', '$middle_name','$last_name','$status','$address','$birth_date')";
+    $insert_information = "INSERT INTO  `person`(`persons_id`,`first_name`, `middle_name`, `last_name`, `status`, `address`, `birth_date`, `barangay_id`, `staff_id`   ) VALUES ('$persons_id','$first_name', '$middle_name','$last_name','$status','$address','$birth_date','$barangay_id','$staff_id')";
     
     if (mysqli_query($con, $insert_information)) {
       echo"
@@ -38,7 +41,7 @@
   			<div class="form-row">
   				<div class="col-md-4 mb-3">
 				      <label for="validationCustom03">ID:</label>
-				      <input name="id" type="number" class="form-control"  id="validationCustom05" placeholder="ID" value="" required>
+				      <input name="persons_id" type="number" class="form-control"  id="validationCustom05" placeholder="ID" value="" required>
     			</div>
   				<div class="col-md-4 mb-3">
 				      <label for="validationCustom03">First Name:</label>
@@ -68,6 +71,32 @@
 	      			<label for="validationCustom08">Birthdate:</label>
 	      			<input name="birth_date" type="date" class="form-control" id="validationCustom01" placeholder="birthdate"  autofocus required>
     			</div>
+	            <h4>BARANGAY ID:
+		            <?php 
+		            	include "config.php";
+		            	$sql = "SELECT * FROM barangay";
+		            	$res = mysqli_query($con, $sql);
+		            ?> 
+		            <select name= "barangay_id" value="<?php echo $information['barangay_id']?>" required>
+		            	<option value=""></option>
+		            <?php while ($line = mysqli_fetch_array($res)){ ?>
+		            	<option value="<?php echo $line['barangay_id']; ?>"><?php echo $line[0] ?></option>
+		            <?php } ?>
+		            </select>
+	            </h4>
+	            <h4>STAFF ID:
+		            <?php 
+		            	include "config.php";
+		            	$sql = "SELECT * FROM staff";
+		            	$res = mysqli_query($con, $sql);
+		            ?>
+		            <select name= "staff_id" value="<?php echo $information['staff_id']?>" required>
+		            	<option value=""></option>
+		            <?php while ($line = mysqli_fetch_array($res)){ ?>
+		            	<option value="<?php echo $line['staff_id']; ?>"><?php echo $line[0] ?></option>
+		            <?php } ?>
+		            </select>
+	            </h4>
     		</div>
     		</div>			
 			
