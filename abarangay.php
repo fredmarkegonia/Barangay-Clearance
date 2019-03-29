@@ -2,12 +2,12 @@
   session_start();
   require 'config.php';
   if(isset($_POST['save'])){
-    $id = $_POST['id'];
+    $barangay_id = $_POST['barangay_id'];
     $barangay_name = $_POST['barangay_name'];
 
 
 	
-    $insert_information = "INSERT INTO  `barangay`(`id`, `barangay_name` ) VALUES ('$id', '$barangay_name')";
+    $insert_information = "INSERT INTO  `barangay`(`barangay_id`, `barangay_name` ) VALUES ('$barangay_id', '$barangay_name')";
     
     if (mysqli_query($con, $insert_information)) {
       echo"
@@ -27,14 +27,15 @@
 
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>BG</title>
 <body>
 		<center><u><h1>Barangay</h1></u>
 		 <form class="needs-validation" action="" method='post'>
   			<div class="form-row">
-  				<div class="col-md-4 mb-3">
+  				<div class="col-md-8 mb-4">
 				      <label for="validationCustom03">ID_no:</label>
-				      <input name="id" type="number" class="form-control"  id="validationCustom05" placeholder="id_no" value="" required>
+				      <input name="barangay_id" type="number" class="form-control"  id="validationCustom05" placeholder="id_no" value="" required>
     			</div>
     		</div>			
     			<div class="col-md-4 md-3">

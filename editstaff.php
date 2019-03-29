@@ -5,22 +5,22 @@
   
  	if(isset($_GET['edit_id'])){
 
-	$get_contact = mysqli_query($con, "select * from staff where id = '$contact_id'");
+	$get_contact = mysqli_query($con, "select * from staff where staff_id = '$contact_id'");
 
   $information = mysqli_fetch_array($get_contact);
    }
 
 	
    if(isset($_POST['update'])){
-    $id = $_POST['id'];
-    $first_name = $_POST['first_name'];
+    $staff_id = $_POST['staff_id'];
+    $first_name1 = $_POST['first_name1'];
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
 
 
 
     
-    $update = "UPDATE `staff` SET `id`='$id',`first_name`='$first_name',`middle_name`='$middle_name',`last_name`='$last_name' WHERE id=".$contact_id;
+    $update = "UPDATE `staff` SET `staff_id`='$staff_id',`first_name1`='$first_name1',`middle_name`='$middle_name',`last_name`='$last_name' WHERE staff_id=".$contact_id;
     if (mysqli_query($con, $update)) {
 
       header('location: stafflist.php');
@@ -33,6 +33,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>BG</title>
 <body>
 		<center><u><h1>STAFF</h1></u>
@@ -40,22 +41,31 @@
   			<div class="form-row">
     			<div class="col-md-4 md-3">
 	      			<label for="validationCustom04">ID NUMBER</label>
-	      			<input name="id" type="number" class="form-control" id="validationCustom01" placeholder="id number"  autofocus required>
+	      			<input name="staff_id" type="number" class="form-control" id="validationCustom01" placeholder="id number" value="<?php echo $information['staff_id']?>" autofocus required>
     			</div>
   				<div class="col-md-4 mb-3">
 				      <label for="validationCustom03">First Name:</label>
-				      <input name="first_name" type="text" class="form-control"  id="validationCustom05" placeholder="First Name" value="" required>
+				      <input name="first_name1" type="text" class="form-control"  id="validationCustom05" placeholder="First Name" value="<?php echo $information['first_name1']?>" required>
     			</div>
     			<div class="col-md-4 md-3">
 	      			<label for="validationCustom04">Middle Name</label>
-	      			<input name="middle_name" type="text" class="form-control" id="validationCustom01" placeholder="Middle name"  autofocus required>
+	      			<input name="middle_name" type="text" class="form-control" id="validationCustom01" placeholder="Middle name" value="<?php echo $information['middle_name']?>" autofocus required>
     			</div>
     		</div>
     			<div class="col-md-4 md-3">
 	      			<label for="validationCustom05">Last Name:</label>
-	      			<input name="last_name" type="text" class="form-control" id="validationCustom01" placeholder="Last name"  autofocus required>
+	      			<input name="last_name" type="text" class="form-control" id="validationCustom01" placeholder="Last name" value="<?php echo $information['last_name']?>" autofocus required>
     			</div>
     		</div>		
+    			<div class="col-md-4 md-3">
+	      			<label for="validationCustom05">User Name:</label>
+	      			<input name="username" type="text" class="form-control" id="validationCustom01" placeholder="username"  autofocus required>
+    			</div>
+    			<div class="col-md-4 md-3">
+	      			<label for="validationCustom05">Password:</label>
+	      			<input name="password" type="password" class="form-control" id="validationCustom01" placeholder="password"  autofocus required>
+    			</div>
+			
           <form class="myform" method="post">
                     <input class="btn" type="submit" name ="update" id="save_btn" value="Update"/>
                     <a href ="stafflist.php"><input class="btn" type="button" id="list_btn" value="List"/><br></a>

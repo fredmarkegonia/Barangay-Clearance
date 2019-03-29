@@ -2,14 +2,14 @@
   session_start();
   require 'config.php';
   if(isset($_POST['save'])){
-    $id = $_POST['id'];
+    $cedula_id = $_POST['cedula_id'];
     $date = $_POST['date'];
     $amount = $_POST['amount'];
     $place = $_POST['place'];
 
 
 	
-    $insert_information = "INSERT INTO  `cedula`(`id`, `date`, `amount`, `place` ) VALUES ('$id','$date', '$amount','$place')";
+    $insert_information = "INSERT INTO  `cedula`(`cedula_id`, `date`, `amount`, `place` ) VALUES ('$cedula_id','$date', '$amount','$place')";
     
     if (mysqli_query($con, $insert_information)) {
       echo"
@@ -29,6 +29,7 @@
 
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>BG</title>
 <body>
 		<center><u><h1>CEDULA</h1></u>
@@ -36,7 +37,7 @@
   			<div class="form-row">
     			<div class="col-md-4 md-3">
 	      			<label for="validationCustom04">CEDULA NUMBER:</label>
-	      			<input name="id" type="number" class="form-control" id="validationCustom01" placeholder="cedula number"  autofocus required>
+	      			<input name="cedula_id" type="number" class="form-control" id="validationCustom01" placeholder="cedula number"  autofocus required>
     			</div>
   				<div class="col-md-4 mb-3">
 				      <label for="validationCustom03">DATE:</label>

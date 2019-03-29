@@ -8,6 +8,7 @@ require 'config.php';
 
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>Baranagay Clearance</title>
 <body>
 		<center>
@@ -26,16 +27,16 @@ require 'config.php';
       			echo "<tr>";?>
 
 						<tr>
-							<td><?php echo $information['id']?></td>
+							<td><?php echo $information['cedula_id']?></td>
 							<td><?php echo $information['date']?></td>
 							<td><?php echo $information['amount']?></td>
 							<td><?php echo $information['place']?></td>
 
 							<td>
-							<a href="deletecedula.php?delete_id=<?php echo $information['id']; ?>">Delete</i></a>
+							<a href="deletecedula.php?delete_id=<?php echo $information['cedula_id']; ?>">Delete</i></a>
 						</td>
 						<td>
-							<a href="editcedula.php?edit_id=<?php echo $information['id']; ?>">Edit</i></a>
+							<a href="editcedula.php?edit_id=<?php echo $information['cedula_id']; ?>">Edit</i></a>
 						</td>
 					</tr>
 

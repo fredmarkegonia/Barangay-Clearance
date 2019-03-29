@@ -5,20 +5,20 @@
   
  	if(isset($_GET['edit_id'])){
 
-	$get_contact = mysqli_query($con, "select * from barangay where id = '$contact_id'");
+	$get_contact = mysqli_query($con, "select * from barangay where barangay_id = '$contact_id'");
 
   $information = mysqli_fetch_array($get_contact);
    }
 
 	
    if(isset($_POST['update'])){
-    $id = $_POST['id'];
+    $barangay_id = $_POST['barangay_id'];
     $barangay_name = $_POST['barangay_name'];
 
 
 
     
-    $update = "UPDATE `barangay` SET `id`='$id',`barangay_name`='$barangay_name' WHERE id=".$contact_id;
+    $update = "UPDATE `barangay` SET `barangay_id`='$barangay_id',`barangay_name`='$barangay_name' WHERE barangay_id=".$contact_id;
     if (mysqli_query($con, $update)) {
 
       header('location: barangaylist.php');
@@ -31,6 +31,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>BG</title>
 <body>
 		<center><u><h1>Barangay</h1></u>
@@ -38,12 +39,12 @@
   			<div class="form-row">
   				<div class="col-md-4 mb-3">
 				      <label for="validationCustom03">ID_no:</label>
-				      <input name="id" type="number" class="form-control"  id="validationCustom05" placeholder="id_no" value="" required>
+				      <input name="barangay_id" type="number" class="form-control"  id="validationCustom05" placeholder="id_no" value="<?php echo $information['barangay_id']?>" required>
     			</div>
     		</div>			
     			<div class="col-md-4 md-3">
 	      			<label for="validationCustom08">Barangay Name:</label>
-	      			<input name="barangay_name" type="text" class="form-control" id="validationCustom01" placeholder="barangay_name"  autofocus required>
+	      			<input name="barangay_name" type="text" class="form-control" id="validationCustom01" placeholder="barangay_name" value="<?php echo $information['barangay_name']?>" autofocus required>
     			</div>
     		</div>
     		</div>	

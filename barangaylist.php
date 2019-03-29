@@ -8,6 +8,7 @@ require 'config.php';
 
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>Baranagay Clearance</title>
 <body>
 		<center>
@@ -24,15 +25,15 @@ require 'config.php';
       			echo "<tr>";?>
 
 						<tr>
-							<td><?php echo $information['id']?></td>
+							<td><?php echo $information['barangay_id']?></td>
 							<td><?php echo $information['barangay_name']?></td>
 
 
 							<td>
-							<a href="deleteabarangay.php?delete_id=<?php echo $information['id']; ?>">Delete</i></a>
+							<a href="deleteabarangay.php?delete_id=<?php echo $information['barangay_id']; ?>">Delete</i></a>
 						</td>
 						<td>
-							<a href="editabarangay.php?edit_id=<?php echo $information['id']; ?>">Edit</i></a>
+							<a href="editabarangay.php?edit_id=<?php echo $information['barangay_id']; ?>">Edit</i></a>
 						</td>
 					</tr>
 
@@ -43,7 +44,7 @@ require 'config.php';
       	?>
       	</table>
       					<br><a href ="abarangay.php"><input class="btn" type="button" id="list_btn" value="ADD barangay"/></br></a>
-      					<br><a href ="index.php"><input class="btn" type="button" id="list_btn" value="HOME"/></br></a>						
+      					<br><a href ="admin.php"><input class="btn" type="button" id="list_btn" value="HOME"/></br></a>						
 
 						
       </center>

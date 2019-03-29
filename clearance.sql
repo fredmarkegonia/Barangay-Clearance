@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2019 at 05:42 AM
+-- Generation Time: Mar 29, 2019 at 11:21 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -36,7 +36,8 @@ CREATE TABLE `barangay` (
 --
 
 INSERT INTO `barangay` (`barangay_id`, `barangay_name`) VALUES
-(98, 'TABOC SUR');
+(98, 'TABOC SUR'),
+(2434, 'mobod');
 
 -- --------------------------------------------------------
 
@@ -52,16 +53,9 @@ CREATE TABLE `bclearance` (
   `amount` int(100) DEFAULT NULL,
   `cedula_id` int(100) DEFAULT NULL,
   `captain_id` int(100) DEFAULT NULL,
-  `staff_id` int(100) DEFAULT NULL
+  `staff_id` int(100) DEFAULT NULL,
+  `purpose` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `bclearance`
---
-
-INSERT INTO `bclearance` (`clearance_id`, `persons_id`, `barangay_id`, `date`, `amount`, `cedula_id`, `captain_id`, `staff_id`) VALUES
-(342, 675, 98, '2019-03-15', 4234, 231, 456, 123),
-(657, 7890, 98, '2019-03-16', 34564, 231, 456, 123);
 
 -- --------------------------------------------------------
 
@@ -126,8 +120,8 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`persons_id`, `firstname`, `middlename`, `lastname`, `status`, `address`, `birth_date`, `barangay_id`) VALUES
-(675, 'fred', 'manginsay', 'egonia', 'single', 'taboc sur oroquieta city', '2019-03-14', 98),
-(7890, 'shaira', 'bigcas', 'sepe', 'devorced', 'taboc', '2019-03-20', 98);
+(43534, 'sdfgdg', 'fgdgd', 'dgdfg', 'gfdg', 'dfgdf', '2019-03-22', 2434),
+(45345, 'sdfsdfsfsd', 'ffsdfs', 'sdfs', 'sdfsdf', 'sfsdfsdf', '2019-03-14', 98);
 
 -- --------------------------------------------------------
 
@@ -150,8 +144,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `first_name1`, `middle_name`, `last_name`, `barangay_id`, `username`, `password`) VALUES
-(123, 'jude', 'sepe', 'buron', 98, '', ''),
-(345, 'mae joy', 'tera', 'mocay', 98, 'mocay@gamail.com', 'mocay');
+(234, 'jude', 'bigcas', 'buron', 98, 'staff', 'staff');
 
 -- --------------------------------------------------------
 
@@ -170,7 +163,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(4, 'admin', 'admin');
+(4, 'admin', 'admin'),
+(5, 'fred', '570a90bfbf8c7eab5dc5d4e26832d5b1');
 
 --
 -- Indexes for dumped tables
@@ -234,7 +228,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --

@@ -13,18 +13,18 @@
 	
    if(isset($_POST['update'])){
     $persons_id = $_POST['persons_id'];
-    $first_name = $_POST['first_name'];
-    $middle_name = $_POST['middle_name'];
-    $last_name = $_POST['last_name'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
     $status = $_POST['status'];
     $address = $_POST['address'];
     $birth_date = $_POST['birth_date'];
     $barangay_id = $_POST['barangay_id'];
-    $staff_id = $_POST['staff_id'];
+
 
 
     
-    $update = "UPDATE `person` SET `persons_id`='$persons_id',`first_name`='$first_name',`middle_name`='$middle_name', `last_name`='last_name', `status`='$status',`address`='$address', `birth_date`='$birth_date',`barangay_id`='$barangay_id',`staff_id`='$staff_id' WHERE persons_id=".$contact_id;
+    $update = "UPDATE `person` SET `persons_id`='$persons_id',`firstname`='$firstname',`middlename`='$middlename', `lastname`='lastname', `status`='$status',`address`='$address', `birth_date`='$birth_date',`barangay_id`='$barangay_id' WHERE persons_id=".$contact_id;
     if (mysqli_query($con, $update)) {
 
       header('location: list.php');
@@ -37,6 +37,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<title>Clearance</title>
 <body>
 		<center><u><h1>PERSON</h1></u>
@@ -47,17 +48,17 @@
 				      <input name="persons_id" type="number" class="form-control"  id="persons_id" placeholder="persons_id" value="<?php echo $information['persons_id']?>" required>
     			</div>
   				<div class="col-md-4 mb-3">
-				      <label for="first_name">First Name:</label>
-				      <input name="first_name" type="text" class="form-control"  id="first_name" placeholder="First Name" value="<?php echo $information['first_name']?>"  required>
+				      <label for="firstname">First Name:</label>
+				      <input name="firstname" type="text" class="form-control"  id="firstname" placeholder="First Name" value="<?php echo $information['firstname']?>"  required>
     			</div>
     			<div class="col-md-4 md-3">
-	      			<label for="middle_name">Middle Name</label>
-	      			<input name="middle_name" type="text" class="form-control" id="middle_name" placeholder="Middle name" value="<?php echo $information['middle_name']?>"  required>
+	      			<label for="middlename">Middle Name</label>
+	      			<input name="middlename" type="text" class="form-control" id="middlename" placeholder="Middle name" value="<?php echo $information['middlename']?>"  required>
     			</div>
     		</div>
     			<div class="col-md-4 md-3">
-	      			<label for="last_name">Last Name:</label>
-	      			<input name="last_name" type="text" class="form-control" id="last_name" placeholder="Last name" value="<?php echo $information['last_name']?>"  required>
+	      			<label for="lastname">Last Name:</label>
+	      			<input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last name" value="<?php echo $information['lastname']?>"  required>
     			</div>
     		</div>			
     			<div class="col-md-4 md-3">
@@ -83,20 +84,7 @@
 		            <select name= "barangay_id" value="<?php echo $information['barangay_id']?>" required>
 		            	<option value=""></option>
 		            <?php while ($line = mysqli_fetch_array($res)){ ?>
-		            	<option value="<?php echo $line['barangay_id']; ?>"><?php echo $line[0] ?></option>
-		            <?php } ?>
-		            </select>
-	            </h4>
-	            <h4>STAFF ID:
-		            <?php 
-		            	include "config.php";
-		            	$sql = "SELECT * FROM staff";
-		            	$res = mysqli_query($con, $sql);
-		            ?>
-		            <select name= "staff_id" value="<?php echo $information['staff_id']?>" required>
-		            	<option value=""></option>
-		            <?php while ($line = mysqli_fetch_array($res)){ ?>
-		            	<option value="<?php echo $line['staff_id']; ?>"><?php echo $line[0] ?></option>
+		            	<option value="<?php echo $line['barangay_id']; ?>"><?php echo $line[1] ?></option>
 		            <?php } ?>
 		            </select>
 	            </h4>

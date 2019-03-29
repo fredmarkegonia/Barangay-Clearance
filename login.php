@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-	<center><h1>Barangay Clearance</h1></center>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<center><h1>STAFF</h1></center>
 	<title>Log_in</title>
 <body>
 		<body>
@@ -17,9 +18,10 @@
 		<label for="validationCustom02">password:</label>
             <input type="password" placeholder="password"required>
 			<input type="submit" value="Login" class="button">
-			<a href ="staff.php"><input class="btn" type="button" id="list_btn" value="REGISTER"/><br></a>	
+
         </form></center>
     </div>
-
  </body>
  </html>
+	
+
