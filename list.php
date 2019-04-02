@@ -1,35 +1,53 @@
 <?php
 session_start();
 require 'config.php';
-	$sql = "SELECT * FROM staff";
+	$sql = "SELECT * FROM person, barangay WHERE person.persons_id = person.persons_id AND barangay.barangay_id = person.barangay_id";
 	$records=mysqli_query($con,$sql);
 
 ?>
 
 <!DOCTYPE html>
 <html>
-	<title>Lab_Exam</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<title>Baranagay Clearance</title>
 <body>
-		<center><u><h1>STAFF</h1></u>
+		<center>
 
-			<h2>STAFF List</h2>
+			<h2>Person List</h2>
       <table class="table table-bordered table-hover table-striped" >
       	<tr>
-      		<th>staff_id</th>
-      		<th>staff_name</th>
-            <th colspan='2'>Action</th>
+      		<th scope="col">|id</th>
+      		<th scope="col">|first name</th>
+      		<th scope="col">|middle name</th>
+      		<th scope="col">|last name</th>
+      		<th scope="col">|status</th>
+      		<th scope="col">|address</th>
+      		<th scope="col">|birthday</th>
+      		<th scope="col">|barangay name</th>
+
+
+
       	</tr>
 	       	<?php
       		while($information=mysqli_fetch_assoc($records)){
       			echo "<tr>";?>
 
-						<td><?php echo $information['staff_id'] ?></td>
-						<td><?php echo $information['staff_name'] ?></td>
-						<td>
-							<a href="delete.php?delete_id=<?php echo $information['staff_id']; ?>">Delete</i></a>
+						<tr>
+							<td><?php echo $information['persons_id']?></td>
+							<td><?php echo $information['firstname']?></td>
+							<td><?php echo $information['middlename']?></td>
+							<td><?php echo $information['lastname']?></td>
+							<td><?php echo $information['status']?></td>
+							<td><?php echo $information['address']?></td>
+							<td><?php echo $information['birth_date']?></td>
+							<td><?php echo $information['barangay_name']?></td>
+
+
+							<td>
+							<a href="delete.php?delete_id=<?php echo $information['persons_id']; ?>">Delete</i></a>
 						</td>
 						<td>
-							<a href="edit.php?edit_id=<?php echo $information['staff_id']; ?>">Edit</i></a>
+							<a href="edit.php?edit_id=<?php echo $information['persons_id']; ?>">Edit</i></a>
 						</td>
 					</tr>
 
@@ -39,7 +57,7 @@ require 'config.php';
     		}
       	?>
       	</table>
-      					<br><a href ="department.php"><input class="btn" type="button" id="list_btn" value="ADD"/></br></a>
+      					<br><a href ="clearance.php"><input class="btn" type="button" id="list_btn" value="ADD PERSON"/></br></a>							
 						<br><a href ="index.php"><input class="btn" type="button" id="list_btn" value="HOME"/></br></a>
 						
       </center>
